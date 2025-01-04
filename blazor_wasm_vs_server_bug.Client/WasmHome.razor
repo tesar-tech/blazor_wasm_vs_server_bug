@@ -1,0 +1,15 @@
+﻿@page "/wasmhome"
+@rendermode InteractiveWebAssembly
+@isCollection
+
+@code{
+
+    bool isCollection;
+    protected override void OnInitialized()
+    {
+        List<int> list = [1,2,3];
+        IEnumerable<int> enumerable =list.Take(2);
+        isCollection = enumerable is ICollection<int>;
+        Console.WriteLine($"is ICollection: {isCollection} {(ICollection<int>)enumerable}");
+    }
+}
